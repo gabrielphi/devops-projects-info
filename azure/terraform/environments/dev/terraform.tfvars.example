@@ -1,0 +1,38 @@
+# =============================================================================
+# TERRAFORM TFVARS EXAMPLE - DEV ENVIRONMENT
+# =============================================================================
+# Copie este arquivo para terraform.tfvars e preencha os valores.
+#   cp terraform.tfvars.example terraform.tfvars
+#
+# ATENÇÃO: O arquivo terraform.tfvars está no .gitignore — NUNCA comitar!
+# Para valores sensíveis (senhas, secrets), use Azure Key Vault ou variáveis de ambiente.
+# =============================================================================
+
+# Configurações Globais
+project_name = "meu-projeto"
+environment  = "dev"
+location     = "eastus"
+
+tags = {
+  Owner      = "time-devops@empresa.com"
+  CostCenter = "engineering"
+}
+
+# Configurações de Rede
+vnet_address_space = ["10.0.0.0/16"]
+
+subnets = {
+  "compute" = {
+    address_prefixes = ["10.0.1.0/24"]
+  }
+  "database" = {
+    address_prefixes = ["10.0.2.0/24"]
+  }
+  "aks" = {
+    address_prefixes = ["10.0.3.0/24"]
+  }
+}
+
+# Configurações de Database
+# db_admin_username = "pgadmin"          # Use variável de ambiente: TF_VAR_db_admin_username
+# db_admin_password = "SuaSenhaAqui123!" # Use variável de ambiente: TF_VAR_db_admin_password

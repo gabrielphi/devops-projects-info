@@ -1,0 +1,38 @@
+# Terraform state files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Terraform lock files (manter apenas o .terraform.lock.hcl)
+# .terraform.lock.hcl  <- NÃO ignorar este arquivo, commitar no repositório
+
+# Diretório de plugins e cache
+.terraform/
+
+# Arquivos de variáveis sensíveis
+*.tfvars
+!*.tfvars.example
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Arquivos de plano
+*.tfplan
+*.plan
+
+# Arquivos de log
+crash.log
+crash.*.log
+
+# Arquivos de ambiente local
+.env
+.env.local
+
+# Credenciais Azure
+azure.conf
+backend.conf
+*.pem
+*.key
