@@ -1,0 +1,32 @@
+# =============================================================================
+# TERRAFORM TFVARS EXAMPLE - PROD ENVIRONMENT
+# =============================================================================
+# Copie este arquivo para terraform.tfvars e preencha os valores.
+#
+# ATENÇÃO: O arquivo terraform.tfvars está no .gitignore — NUNCA comitar!
+# Para produção, prefira usar variáveis de ambiente ou Azure Key Vault.
+# =============================================================================
+
+project_name = "meu-projeto"
+environment  = "prod"
+location     = "eastus"
+
+tags = {
+  Owner      = "time-devops@empresa.com"
+  CostCenter = "engineering"
+  Criticality = "high"
+}
+
+vnet_address_space = ["10.2.0.0/16"]
+
+subnets = {
+  "compute" = {
+    address_prefixes = ["10.2.1.0/24"]
+  }
+  "database" = {
+    address_prefixes = ["10.2.2.0/24"]
+  }
+  "aks" = {
+    address_prefixes = ["10.2.3.0/24"]
+  }
+}
