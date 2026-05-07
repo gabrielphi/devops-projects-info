@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: funcionou-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: funcionou-app
+  template:
+    metadata:
+      labels:
+        app: funcionou-app
+    spec:
+      containers:
+        - name: funcionou-app
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: html
+          configMap:
+            name: funcionou-html
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: funcionou-html
+  namespace: default
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Funcionou</title>
+      <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #f0f4f8;
+          font-family: sans-serif;
+        }
+        h1 {
+          font-size: 4rem;
+          color: #2d6a4f;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Funcionou!</h1>
+    </body>
+    </html>
